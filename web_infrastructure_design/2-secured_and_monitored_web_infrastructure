@@ -1,0 +1,29 @@
+User’s Computer
+     |
+     | DNS lookup for www.foobar.com → Load Balancer IP (1.2.3.4)
+     |
+Internet (Encrypted HTTPS Traffic)
+     |
++---------------------+
+|     Firewall 1      |  <-- Protects Load Balancer
++---------------------+
+          |
++---------------------+
+|    Load Balancer     |  (HAProxy with SSL cert for HTTPS)
+|  IP: 1.2.3.4        |
++---------------------+
+          |
+    -------------------------
+    |           |           |
++-----------+ +-----------+ +-----------+
+| Firewall2 | | Firewall3 | | Firewall4 |   <-- One per backend server
++-----------+ +-----------+ +-----------+
+    |           |           |
++---------+ +---------+ +---------+
+| Server1 | | Server2 | | Server3 |  
+|(Nginx + | |(Nginx + | |(Nginx + |
+| App +   | | App +   | | App +   |
+| MySQL)  | | MySQL)  | | MySQL)  |
++---------+ +---------+ +---------+
+
+Each server runs a monitoring client sending data to external monitoring service (Sumologic or similar).
