@@ -1,1 +1,13 @@
-https://i.imgur.com/J1k61kG.jpeg
+User’s Computer
+     |
+     |   (1) DNS lookup for www.foobar.com → resolves to IP 8.8.8.8
+     |
+     v
+Internet
+     |
+     v
+Server (IP: 8.8.8.8)
+  ├── Nginx (Web Server)
+  ├── Application Server (runs your app logic)
+  ├── Application Files (code base)
+  └── MySQL Database
