@@ -1,0 +1,17 @@
+          Internet
+             |
+     +--------------------+
+     |  Load Balancer 1   |  <---- HAProxy Cluster (Active/Passive)
+     +--------------------+
+             |
+     +--------------------+
+     |  Load Balancer 2   |  <---- HAProxy Cluster (Active/Passive)
+     +--------------------+
+             |
+    --------------------------
+    |           |            |
++---------+ +-----------+ +-----------+
+| Web     | | Application| | Database  |
+| Server  | | Server     | | Server    |
+| (Nginx) | |            | | (MySQL)   |
++---------+ +-----------+ +-----------+
