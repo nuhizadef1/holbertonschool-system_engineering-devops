@@ -1,0 +1,24 @@
+User’s Computer
+     |
+     |   (1) DNS lookup for www.foobar.com → resolves to IP of Load Balancer (e.g., 1.2.3.4)
+     |
+     v
+Internet
+     |
+     v
++--------------------+
+|   Load Balancer     |  (HAProxy)
+|  IP: 1.2.3.4        |
++---------+----------+
+          |
+    -----------------
+    |               |
++---------+     +---------+
+| Server1 |     | Server2 |
+| (Nginx, |     | (Nginx, |
+|  App,   |     |  App,   |
+| MySQL)  |     | MySQL)  |
++---------+     +---------+
+
+Server1 MySQL = Primary (Master)
+Server2 MySQL = Replica (Slave)
